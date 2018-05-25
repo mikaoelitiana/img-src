@@ -6,13 +6,18 @@ function Button(props) {
 	const {
 		to,
 		onClick,
-		children
+		children,
+		left,
+		right
 	} = props
 
 	const disabledClasses = props.disabled ? 'o-50' : 'dim'
 	const buttontypeClasses = props.buttontype === 'solid' ? 'bg-mid-gray white bn' : 'ba bw1 mid-gray bg-transparent'
 
-	const classes = `pointer link br-pill ph4 pv2 f4 dib ${disabledClasses} ${buttontypeClasses}`
+	const leftClass = left ? 'br--left' : ''
+	const rightClass = right ? 'br--right' : ''
+
+	const classes = `pointer link br-pill ph4 pv2 f4 dib ${disabledClasses} ${buttontypeClasses} ${leftClass} ${rightClass}`
 
 	if (props.disabled) {
 		return (
@@ -53,7 +58,9 @@ Button.propTypes = {
 	disabled: PropTypes.bool,
 	buttontype: PropTypes.oneOf(['solid', 'outline-only']),
 	onClick: PropTypes.func,
-	submit: PropTypes.bool
+	submit: PropTypes.bool,
+	left: PropTypes.bool,
+	right: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -62,7 +69,9 @@ Button.defaultProps = {
 	disabled: false,
 	buttontype: 'solid',
 	onClick: null,
-	submit: false
+	submit: false,
+	left: false,
+	right: false
 }
 
 export default Button
